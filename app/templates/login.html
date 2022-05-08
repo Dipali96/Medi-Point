@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css'%}">
+	<title>LOGIN</title>
+</head>
+<body>
+	<form method="POST" action="#">
+		{% csrf_token %}
+		<input type="text" name="username" placeholder="Enter your username">
+		<input type="password" name="password" placeholder="Enter your password">
+		<input type="submit" name="submit">
+	</form>
+</body>
+</html>

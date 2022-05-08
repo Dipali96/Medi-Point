@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css'%}">
+	<title>PROFILE</title>
+</head>
+<body>
+	<div>
+		<li><a href="{% url 'sbookings'%}">Schedule a Booking</a></li>
+		<li><a href="{% url 'pbookings'%}">View Bookings</a></li>
+		<li><a href="{% url 'logout'%}">Logout</a></li>
+	</div>
+	<div>
+		<form method="POST" action="#">
+			{% csrf_token %}
+			<input type="text" name="f_name" placeholder="Enter your First Name" value={{profile.f_name}}><br>
+			<input type="text" name="l_name" placeholder="Enter your Last Name" value={{profile.l_name}}><br>
+			<input type="number" name="aadhaar" placeholder="Enter your Aadhaar Card Number" value={{profile.aadhaar}}><br>
+			<input type="textarea" name="address" placeholder="Enter your address" value="{{profile.address}}"><br>
+			<input type="number" name="phone_no" placeholder="Enter your Contact Number" value={{profile.phone_no}}><br>
+			{% if profile.gender == "M" %}
+				<input type="radio" id="Male" name="gender" value="M" checked>
+				<label for="Male">Male</label><br>
+				<input type="radio" id="Female" name="gender" value="F">
+				<label for="Female">Female</label><br>
+			{% else %}
+				<input type="radio" id="Male" name="gender" value="M">
+				<label for="Male">Male</label><br>
+				<input type="radio" id="Female" name="gender" value="F" checked>
+				<label for="Female">Female</label><br>
+			{% endif %}
+			<input type="submit" name="submit">
+		</form>
+	</div>
+</body>
+</html>

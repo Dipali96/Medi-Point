@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css'%}">
+
+	<title>HOMEPAGE</title>
+</head>
+<body>
+	<h1>This is homepage</h1>
+	{% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+		<li><a class="nav-link text-light" href="{% url 'login'%}">&nbsp; <strong>Login</strong> </a></li>
+		<li><a class="nav-link text-light" href="{% url 'pregister'%}">&nbsp; <strong>Patient Register</strong> </a></li>
+		<li><a class="nav-link text-light" href="{% url 'dregister'%}">&nbsp; <strong>Doctor Register</strong> </a></li>
+	{% endif %}
+</body>
+</html>
