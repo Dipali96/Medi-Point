@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css'%}">
+	<title>SCHEDULE BOOKINGS</title>
+</head>
+<body>
+	<h1>SCHEDULE BOOKING</h1>
+	{% if a %}
+		<h1>{{field}} Doctors</h1>
+			{% for doc in docs %}
+				<li><a href="{% url 'doctor' doc.doctor.username.username %}">{{doc.doctor.username.username}}</a></li>
+			{% endfor %}
+	{% else %}
+		<h3>Choose youur Category</h3>
+		<form method="POST" action="#">
+			{% csrf_token %}
+			<select id="field" name="field" size="7">
+				{% for ft in fields %}
+					<option value="{{ft.field}}">{{ft.field}}</option>
+				{% endfor %}
+			</select>
+			<input type="submit" name="submit">
+		</form>
+	{% endif %}
+</body>
+</html>

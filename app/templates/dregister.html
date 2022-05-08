@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css'%}">
+	<title>DOCTOR REGISTERATION</title>
+</head>
+<body>
+	{% if error_message %}
+		{{error_message}}
+	{% endif %}
+	<h1>DOCTOR REGISTRATION</h1>
+	<form method="POST" action="#">
+		{% csrf_token %}
+		<input type="text" name="username" placeholder="Enter your username"><br>
+		<input type="password" name="password" placeholder="Enter your password"><br>
+		<input type="text" name="f_name" placeholder="Enter your First Name"><br>
+		<input type="text" name="l_name" placeholder="Enter your Last Name"><br>
+		<input type="number" name="aadhaar" placeholder="Enter your Aadhaar Card Number"><br>
+		<input type="textarea" name="address" placeholder="Enter your address"><br>
+		<input type="number" name="phone_no" placeholder="Enter your Contact Number"}><br>
+		<input type="radio" id="Male" name="gender" value="M">
+		<label for="Male">Male</label><br>
+		<input type="radio" id="Female" name="gender" value="F">
+		<label for="Female">Female</label><br>
+		<label for="field">Choose your Field:</label>
+		<select id="field" name="field" size="7">
+			{% for ft in f %}
+				<option value="{{ft.field}}">{{ft.field}}</option>
+			{% endfor %}
+		</select>
+		<input type="submit" name="submit">
+
+	</form>
+</body>
+</html>
