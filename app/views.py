@@ -162,8 +162,9 @@ def sbookings(request):
 		field = FieldTypes.objects.get(field=request.POST["field"])
 		docs = Doctor.objects.filter(field=field)
 		for i in docs:
-			a = i.lat
-			b = i.lng
+			det =  User_Details.objects.get(username=i.doctor)
+			a = det.lat
+			b = det.lng
 			if loc(a,b,lat,lag)<1.5:
 				r.append(i)
 		return render(request, "sbookings.html", {"field":field,"docs":r, "a":True})
